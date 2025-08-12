@@ -7,9 +7,9 @@ interface FinalStepsProps {
 
 export const FinalSteps = ({ onComplete }: FinalStepsProps) => {
   const steps = [
-    "Verify your location",
-    "Complete quick survey",
-    "Claim your reward"
+    "Complete 2-3 required deals",
+    "Provide a valid email address",
+    "Ensure you are 18 years or older"
   ];
 
   return (
