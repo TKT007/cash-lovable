@@ -20,7 +20,24 @@
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
-    <script>document.addEventListener("DOMContentLoaded",(()=>{document.querySelectorAll("a").forEach((e=>{e.getAttribute("href")?.includes("#")||(e.getAttribute("href")?.includes("?")?e.setAttribute("href",e.getAttribute("href")+window.location.search.replace("?","&")):e.getAttribute("href")?e.setAttribute("href",e.getAttribute("href")+window.location.search):"")}))}));</script>
+    <script>
+// Função para capturar parâmetro da URL
+const getUrlParameter = (paramName) => {
+  const urlParams = new URLSearchParams(window.location.search);
+  return urlParams.get(paramName);
+};
 
+// Função para adicionar parâmetro source a qualquer URL
+const addSourceToUrl = (baseUrl) => {
+  const sourceParam = getUrlParameter('source');
+  
+  if (sourceParam && sourceParam.trim() !== '') {
+    const separator = baseUrl.includes('?') ? '&' : '?';
+    return `${baseUrl}${separator}source=${encodeURIComponent(sourceParam)}`;
+  }
+  
+  return baseUrl;
+};
+    </script>    
   </body>
 </html>
